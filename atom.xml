@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://postyear.github.io</id>
     <title>Postyear</title>
-    <updated>2021-02-20T13:09:29.798Z</updated>
+    <updated>2021-02-21T10:34:41.675Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://postyear.github.io"/>
     <link rel="self" href="https://postyear.github.io/atom.xml"/>
-    <subtitle>The day</subtitle>
+    <subtitle>Postyear，记录一个普通程序员的生活</subtitle>
     <logo>https://postyear.github.io/images/avatar.png</logo>
     <icon>https://postyear.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Postyear</rights>

@@ -73,7 +73,7 @@
             
               
             
-            <li class="nav-item nav-item-active">
+            <li class="nav-item ">
               
               
                 <a href="/" target="_self">
@@ -170,7 +170,7 @@
   <div class="main-continer">
     
     <div
-      class="section-layout muse bg-color">
+      class="section-layout bg-color muse">
       <div class="section-layout-wrapper">
         <div id="sidebarMeta" class="sidebar">
     
@@ -241,242 +241,43 @@
     });
   }
   </script>
-        <div class="section-box muse">
-          <section class="section bg-color posts-expand slide-down-in">
-            
-  <article class="post-list-box bg-color post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://postyear.github.io/post/ru-qin-jian-ce-zhong-shi-yong-de-shu-ju-zeng-qiang/">
-      入侵检测中使用的数据增强
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item">
-      <i class="fa fa-thumb-tack"></i>
-      <span class="language" data-lan="top">置顶</span>
-      <span class="post-meta-divider">|</span>
-    </span>
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-03-10 20:51:22">2021-03-10</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
+        <div class="section-box tag-line box-shadow-wrapper">
+          <section class="section tags-section posts-expand bg-color">
+            <div class="padding-wrapper">
+  <div class="tag-timeline-box">
+    <div class="tag-timeline-wrapper">
+      <div class="tag-timeline-title">
+        <h2>
+          机器学习
+          <small class="language" data-lan="tag">标签</small>
+        </h2>
+      </div>
       
       
-      <a href="https://postyear.github.io/tag/NpOY-EsWm/">
-        <span>机器学习</span>
+      
+      <a href="https://postyear.github.io/post/ru-qin-jian-ce-zhong-shi-yong-de-shu-ju-zeng-qiang/">
+        <div class="motion-warpper">
+          <div class="tag-post-node">
+            <h1>
+              03-10
+              <small>入侵检测中使用的数据增强</small>
+            </h1>
+          </div>
+        </div>
       </a>
       
       
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>2<span class="language" data-lan="minute">分钟</span></span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>375<span class="pc-show language" data-lan="words">字数</span></span>
-    </span>
-    
-  </div>
-</section>
-      <div class="post-body">
-        
-        
-          
-            <p>在入侵检测中，一般特征选择用得非常多，数据增强技术使用比较少。但也有。</p>
-<p>数据增强在神经网络中更常见，主要用来防止过拟合，用于dataset较小的时候。</p>
-<p>之前对神经网络有过了解的人都知道，虽然一个两层网络在理论上可以拟合所有的分布，但是并不容易学习得到。因此在实际中，我们通常会增加神经网络的深度和广度，从而让神经网络的学习能力增强，便于拟合训练数据的分布情况。在卷积神经网络中，有人实验得到，深度比广度更重要。</p>
-<p>增强后的数据维度没有发生变化。今天记录的就是这样一种有监督的数据增强方法，计算特征的边缘密度比(marginal density ratio)替换原特征，可以加速训练。最初是国外一篇论文提出的，被用于基于SVM的入侵检测论文中，尽管作者表明可以替换为任意分类器，但应该最适合SVM。步骤如下：</p>
-<figure data-type="image" tabindex="1"><img src="https://postyear.github.io/post-images/1615381362646.png" alt="" loading="lazy"></figure>
-<p>作者是用R语言实现的，R包不太会用，后来就没有用。链接见下方：</p>
-
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://postyear.github.io/post/ru-qin-jian-ce-zhong-shi-yong-de-shu-ju-zeng-qiang/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
       
-        <footer class="post-footer">
-          <div class="post-eof"></div>
-        </footer>
+      
+      
+      
+      
+      
+      
+      
       
     </div>
-  </article>
-
-  <article class="post-list-box bg-color post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://postyear.github.io/post/han-shan-very-hot/">
-      韩山
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-02-21 20:21:34">2021-02-21</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>1<span class="language" data-lan="minute">分钟</span></span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>16<span class="pc-show language" data-lan="words">字数</span></span>
-    </span>
-    
   </div>
-</section>
-      <div class="post-body">
-        
-        
-          
-            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
-            
-            
-              
-              
-              
-            
-              
-              
-              
-            
-              
-              
-              
-            
-            
-              <p><p>韩山，比想象中好玩！就是今天天太热了！<br>
-<img src="https://postyear.github.io/post-images/1613910525338.jpg" alt="" loading="lazy"><br>
-<img src="https://postyear.github.io/post-images/1613910705228.jpg" alt="" loading="lazy"><br>
-
-                
-              <p>
-            
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://postyear.github.io/post/han-shan-very-hot/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-        <footer class="post-footer">
-          <div class="post-eof"></div>
-        </footer>
-      
-    </div>
-  </article>
-
-  <article class="post-list-box bg-color post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://postyear.github.io/post/di-yi-tian/">
-      第一天
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-02-18 21:11:28">2021-02-18</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>1<span class="language" data-lan="minute">分钟</span></span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>8<span class="pc-show language" data-lan="words">字数</span></span>
-    </span>
-    
-  </div>
-</section>
-      <div class="post-body">
-        
-        
-          
-            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
-            
-            
-              
-              
-              
-            
-              
-              
-            
-              <p><p>开通博客的第一天</p>
-
-                
-              <p>
-            
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://postyear.github.io/post/di-yi-tian/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-        <footer class="post-footer">
-          <div class="post-eof"></div>
-        </footer>
-      
-    </div>
-  </article>
-  
-            
-            
-<div class="page bg-color">
-  <ul class="pagination-ul">
-    
-    
-      
-        <li class="pagination-li pagination-active">
-            <a href="/page/../">
-              1
-            </a>
-        </li>
-      
-    
-    
-  </ul>
 </div>
           </section>
         </div>

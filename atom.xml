@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://postyear.github.io</id>
     <title>Postyear</title>
-    <updated>2021-03-10T03:06:30.110Z</updated>
+    <updated>2021-03-10T13:04:00.489Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://postyear.github.io"/>
     <link rel="self" href="https://postyear.github.io/atom.xml"/>
@@ -11,7 +11,33 @@
     <icon>https://postyear.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Postyear</rights>
     <entry>
-        <title type="html"><![CDATA[韩山，Very Hot！]]></title>
+        <title type="html"><![CDATA[入侵检测中使用的数据增强]]></title>
+        <id>https://postyear.github.io/post/ru-qin-jian-ce-zhong-shi-yong-de-shu-ju-zeng-qiang/</id>
+        <link href="https://postyear.github.io/post/ru-qin-jian-ce-zhong-shi-yong-de-shu-ju-zeng-qiang/">
+        </link>
+        <updated>2021-03-10T12:51:22.000Z</updated>
+        <summary type="html"><![CDATA[<p>在入侵检测中，一般特征选择用得非常多，数据增强技术使用比较少。但也有。</p>
+<p>数据增强在神经网络中更常见，主要用来防止过拟合，用于dataset较小的时候。</p>
+<p>之前对神经网络有过了解的人都知道，虽然一个两层网络在理论上可以拟合所有的分布，但是并不容易学习得到。因此在实际中，我们通常会增加神经网络的深度和广度，从而让神经网络的学习能力增强，便于拟合训练数据的分布情况。在卷积神经网络中，有人实验得到，深度比广度更重要。</p>
+<p>增强后的数据维度没有发生变化。今天记录的就是这样一种有监督的数据增强方法，计算特征的边缘密度比(marginal density ratio)替换原特征，可以加速训练。最初是国外一篇论文提出的，被用于基于SVM的入侵检测论文中，尽管作者表明可以替换为任意分类器，但应该最适合SVM。步骤如下：</p>
+<figure data-type="image" tabindex="1"><img src="https://postyear.github.io/post-images/1615381362646.png" alt="" loading="lazy"></figure>
+<p>作者是用R语言实现的，R包不太会用，后来就没有用。链接见下方：</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>在入侵检测中，一般特征选择用得非常多，数据增强技术使用比较少。但也有。</p>
+<p>数据增强在神经网络中更常见，主要用来防止过拟合，用于dataset较小的时候。</p>
+<p>之前对神经网络有过了解的人都知道，虽然一个两层网络在理论上可以拟合所有的分布，但是并不容易学习得到。因此在实际中，我们通常会增加神经网络的深度和广度，从而让神经网络的学习能力增强，便于拟合训练数据的分布情况。在卷积神经网络中，有人实验得到，深度比广度更重要。</p>
+<p>增强后的数据维度没有发生变化。今天记录的就是这样一种有监督的数据增强方法，计算特征的边缘密度比(marginal density ratio)替换原特征，可以加速训练。最初是国外一篇论文提出的，被用于基于SVM的入侵检测论文中，尽管作者表明可以替换为任意分类器，但应该最适合SVM。步骤如下：</p>
+<figure data-type="image" tabindex="1"><img src="https://postyear.github.io/post-images/1615381362646.png" alt="" loading="lazy"></figure>
+<p>作者是用R语言实现的，R包不太会用，后来就没有用。链接见下方：</p>
+<!-- more -->
+<p><strong>Paper</strong>：A novel approach to intrusion detection using<br>
+SVM ensemble with feature augmentation<br>
+<strong>Github</strong>：https://github.com/ShanLu92/FeaAug/blob/4df07a5c099b8e4b234ba3156208c2b671c127b2/R/LMDRT.R&gt;</p>
+<p>还有这篇论文Augboost(https://github.com/augboost-anon/augboost)，也是提出了一种新的数据增强技术，无监督。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[韩山]]></title>
         <id>https://postyear.github.io/post/han-shan-very-hot/</id>
         <link href="https://postyear.github.io/post/han-shan-very-hot/">
         </link>

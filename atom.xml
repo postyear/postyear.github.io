@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://postyear.github.io</id>
     <title>Postyear</title>
-    <updated>2021-03-10T13:04:00.489Z</updated>
+    <updated>2021-03-10T13:05:34.273Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://postyear.github.io"/>
     <link rel="self" href="https://postyear.github.io/atom.xml"/>
@@ -33,7 +33,9 @@
 <p><strong>Paper</strong>：A novel approach to intrusion detection using<br>
 SVM ensemble with feature augmentation<br>
 <strong>Github</strong>：https://github.com/ShanLu92/FeaAug/blob/4df07a5c099b8e4b234ba3156208c2b671c127b2/R/LMDRT.R&gt;</p>
-<p>还有这篇论文Augboost(https://github.com/augboost-anon/augboost)，也是提出了一种新的数据增强技术，无监督。</p>
+<!-- more -->
+<p>还有这篇论文Augboost(Gradient Boosting Enhanced with Step-Wise Feature Augmentation)也是提出了一种新的数据增强技术，无监督，百度可以查到介绍，<br>
+https://github.com/augboost-anon/augboost</p>
 ]]></content>
     </entry>
     <entry>

@@ -2052,7 +2052,7 @@ p > code {
   }
 }
 body {
-      background-color: #e3fafc;
+      background-color: #f8f9fa;
     }.header {
         width: 960px;
         margin: 0 auto;
@@ -2162,10 +2162,8 @@ body {
     .active-hidden > a {
       color: #fc6423;
       border-bottom-color: #fc6423;
-    }.reward-btn-text {
-        background-color: #845ef7fe !important;
-      }.bg-color {
-      background-color: #e3fafcfe;
+    }.bg-color {
+      background-color: #f8f9fafe;
     }
     .site-meta {
       background: #000 !important;

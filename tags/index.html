@@ -9,8 +9,8 @@
 <meta name="description" content="Postyear，记录一个普通程序员的生活">
 <meta name="theme-color" content="#000">
 <title>Postyear</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1615342132092">
-<link rel="stylesheet" href="/media/css/mist.css">
+<link rel="shortcut icon" href="/favicon.ico?v=1615343806692">
+<link rel="stylesheet" href="/media/css/muse.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
   href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
@@ -44,7 +44,7 @@
   <div class="head-top-line"></div>
   <div class="header-box">
     
-<div class="mist">
+<div class="muse">
   <header class="header bg-color ">
     <div class="blog-header box-shadow-wrapper  " id="header">
       <div class="nav-toggle" id="nav_toggle">
@@ -57,17 +57,13 @@
       <div class="site-meta">       
         <div class="site-title">
           
-            <a href="/" class="">
-              <span class="logo-line-before">
-                <i class=""></i>
-              </span>
-              <span class="main-title">Postyear</span>
-              <span class="logo-line-after">
-                <i class=""></i>
-              </span>
+            <a href="/" class="brand">
+              <span>Postyear</span>
             </a>  
           
         </div>
+        
+          <p class="subtitle">postyear，记录一个程序员的生活</p>
         
       </div>
       <nav class="site-nav" id="site_nav">
@@ -174,21 +170,27 @@
   <div class="main-continer">
     
     <div
-      class="section-layout bg-color mist">
+      class="section-layout bg-color muse">
       <div class="section-layout-wrapper">
         <div id="sidebarMeta" class="sidebar">
     
 <div class="sidebar-wrapper box-shadow-wrapper ">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
-    <p class="site-author-name">适用 Gemini,Pisces 布局,版权说明需配置</p>
+    <p class="site-author-name">Postyear</p>
+    
+    <div class="site-description right-motion">
+      
+        <p id="binft">程序猿，研究僧</p>
+      
+    </div>
     
   </div>
   <div class="sidebar-item side-item-stat right-motion">
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">3</span>
+        <span class="site-item-stat-count">2</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -227,7 +229,7 @@
 </div>
 <script>
   let sidebarMeta = document.querySelector('#sidebarMeta');
-  let scheme = 'mist';
+  let scheme = 'muse';
   let sidebarWrapper = document.querySelector('.sidebar-wrapper');
   if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
     document.addEventListener('scroll', function(e) {
@@ -323,7 +325,7 @@
     <span class="muse-line muse-line-last"></span>
   </div>
   
-  <div class="mist back-to-top" id="back_to_top">
+  <div class="muse back-to-top" id="back_to_top">
     <i class="fa fa-arrow-up"></i>
     
   </div>
@@ -354,11 +356,15 @@
         <div class="live_ico_item type_info" id="showInfoBtn"></div>
         <div class="live_ico_item type_talk" id="showTalkBtn"></div>
         
+        <div class="live_ico_item type_music" id="musicButton"></div>
+        
         <div class="live_ico_item type_youdu" id="youduButton"></div>
         <div class="live_ico_item type_quit" id="hideButton"></div>
         <input name="live_statu_val" id="live_statu_val" value="0" type="hidden" />
         <audio src="" style="display:none;" id="live2d_bgm" data-bgm="0" preload="none"></audio>
         <input id="duType" value="douqilai" type="hidden">
+        
+        <input name="live2dBGM" value="http://freetyst.nf.migu.cn/public/productBe/productB01/2019/08/1920/2019%E5%B9%B408%E6%9C%8819%E6%97%A5%E7%8B%AC%E7%AB%8B%E9%9F%B3%E4%B9%90%E4%BA%BA%E5%BC%95%E5%85%A5%E4%BD%95%E7%92%87%E5%86%85%E5%AE%B9%E5%87%86%E5%85%A51%E9%A6%96/%E6%A0%87%E6%B8%85%E9%AB%98%E6%B8%85/MP3_128_16_Stero/69742900012.mp3?channelid=03&amp;k=46cbfb8204d76f93&amp;t=1615350921&amp;msisdn=658622ae-b496-42bd-a523-43d641b3c87b" type="hidden">
         
       </div>
     
@@ -1397,9 +1403,6 @@
 <script src="/media/js/cool.js"></script>
 
 
-
-  <div class="snow-container"></div>
-  <script src="/media/js/bg/snow.js"></script>
 
 
 </html>

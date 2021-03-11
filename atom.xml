@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://postyear.github.io</id>
     <title>Postyear</title>
-    <updated>2021-03-11T10:36:23.610Z</updated>
+    <updated>2021-03-11T12:30:00.616Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://postyear.github.io"/>
     <link rel="self" href="https://postyear.github.io/atom.xml"/>
@@ -11,7 +11,7 @@
     <icon>https://postyear.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Postyear</rights>
     <entry>
-        <title type="html"><![CDATA[2014年流形的聚类算法(Clustering by fast search and find of density peaksd)]]></title>
+        <title type="html"><![CDATA[2014年流行的聚类算法(Clustering by fast search and find of density peaksd)]]></title>
         <id>https://postyear.github.io/post/2014-nian-liu-xing-de-ju-lei-suan-fa-clustering-by-fast-search-and-find-of-density-peaksd/</id>
         <link href="https://postyear.github.io/post/2014-nian-liu-xing-de-ju-lei-suan-fa-clustering-by-fast-search-and-find-of-density-peaksd/">
         </link>

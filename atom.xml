@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://postyear.github.io</id>
     <title>Postyear</title>
-    <updated>2021-03-11T10:33:08.909Z</updated>
+    <updated>2021-03-11T10:36:23.610Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://postyear.github.io"/>
     <link rel="self" href="https://postyear.github.io/atom.xml"/>
@@ -69,7 +69,8 @@ Mean shift 算法是基于核密度估计的爬山算法，可用于聚类、图
 <p>可以参阅文章：https://www.cnblogs.com/nolonely/p/6964852.html</p>
 <p>python实现代码：<br>
 1.https://github.com/Larry213021/Clustering-by-fast-search-and-find-of-density-peaks/blob/main/classification/CFSDP(%E4%BB%A5t%E7%82%BA%E5%9F%BA%E6%BA%96).py<br>
-2.https://github.com/Kingzy-Chen/DensityPeakCluster</p>
+2.https://github.com/Kingzy-Chen/DensityPeakCluster<br>
+3.https://github.com/cwehmeyer/pydpc (py库)</p>
 <p><strong>优点：</strong><br>
 无需k值，性能过得去<br>
 <strong>缺点：</strong><br>

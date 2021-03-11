@@ -9,7 +9,7 @@
 <meta name="description" content="Postyear，记录一个普通程序员的生活">
 <meta name="theme-color" content="#000">
 <title>入侵检测中使用的数据增强 | Postyear</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1615381530376">
+<link rel="shortcut icon" href="/favicon.ico?v=1615458437524">
 <link rel="stylesheet" href="/media/css/muse.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -207,7 +207,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">3</span>
+        <span class="site-item-stat-count">4</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -422,6 +422,10 @@ https://github.com/augboost-anon/augboost</p>
   </div>
   <div class="nav">
     <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="2014年流形的聚类算法(Clustering by fast search and find of density peaksd)" href="https://postyear.github.io/post/2014-nian-liu-xing-de-ju-lei-suan-fa-clustering-by-fast-search-and-find-of-density-peaksd/">2014年流形的聚类算法(Clustering by fast search and find of density peaksd)</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="2014年流形的聚类算法(Clustering by fast search and find of density peaksd)" href="https://postyear.github.io/post/2014-nian-liu-xing-de-ju-lei-suan-fa-clustering-by-fast-search-and-find-of-density-peaksd/">上一篇</a>
       
     </div>
     <div class="nav-next">
@@ -1452,6 +1456,47 @@ https://github.com/augboost-anon/augboost</p>
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://postyear.github.io/post/2014-nian-liu-xing-de-ju-lei-suan-fa-clustering-by-fast-search-and-find-of-density-peaksd/"" data-c="
+          &lt;p&gt;最近在学习聚类算法，很多聚类算法需要指定聚类个数，而聚类个数对聚类结果的影响非常大。&lt;/p&gt;
+&lt;p&gt;聚类个数一般作为kmeans等方法的前置参数。但也有一些聚类算法克服了缺点(变相转移)，比如：&lt;/p&gt;
+&lt;p&gt;1.Affinity Propagation（AP）聚类&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;基本思想：&lt;/strong&gt;&lt;br&gt;
+将全部样本看作网络的节点，然后通过网络中各条边的消息传递计算出各样本的聚类中心。聚类过程中，共有两种消息在各节点间传递，分别是吸引度( responsibility)和归属度(availability) 。AP算法通过迭代过程不断更新每一个点的吸引度和归属度值，直到产生m个高质量的Exemplar（类似于质心），同时将其余的数据点分配到相应的聚类中。&lt;/p&gt;
+&lt;p&gt;已被sklearn.cluster收录&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;优点：&lt;/strong&gt;&lt;br&gt;
+无需指定K值，而且最终得到的聚类中心就是原数据中的点，收敛效果远胜于Kemans&lt;br&gt;
+&lt;strong&gt;缺点：&lt;/strong&gt;&lt;br&gt;
+计算复杂度大，时间长&lt;/p&gt;
+&lt;p&gt;2.meanshift&lt;br&gt;
+&lt;strong&gt;基本思想&lt;/strong&gt;&lt;br&gt;
+Mean shift 算法是基于核密度估计的爬山算法，可用于聚类、图像分割、跟踪等。 MeanShift，顾名思义，由Mean（均值）和shift（偏移）组成。也就是有一个点x，周围有很多点xi，我们计算点x移动到每个点所需要的偏移量之和，求平均，就得到平均偏移量。该偏移量包含大小和方向 ，方向就是周围分布密集的方向。然后点x往平均偏移量方向移动，再以此为新起点，不断迭代直到满足一定条件结束。&lt;/p&gt;
+&lt;p&gt;已被sklearn.cluster收录&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;优点：&lt;/strong&gt;&lt;br&gt;
+几乎是没有参数的，带宽可以用sklearn自带的函数估计出来。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;&lt;br&gt;
+聚类性能不是那么强&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;3.密度峰值&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;核心思想&lt;/strong&gt;&lt;br&gt;
+对聚类中心的刻画上，而且认为聚类中心同时具有以下两种特点：&lt;br&gt;
+1）本身的密度大，即它被密度均不超过它的邻居包围&lt;br&gt;
+2）与其他密度更大的数据点之间的“距离”相对更大&lt;/p&gt;
+&lt;p&gt;这个算法是14年刚出现的，从GitHub的搜索结果来看也很流行，不同语言的都有。简单来说分四步：&lt;br&gt;
+第1步，求每个点的密度rho。点的密度就是，以点为中心，以dc为半径，画一个小圆圈，数数里面几个点，圆圈中点的个数就是点的密度。（还可以用高斯核密度求点的密度，求出来的密度是连续型的）&lt;br&gt;
+第2步，计算每个点的delta。假设有一个点x，求比点x的密度大的且距离点x最近的那个点y，那么点x与点y之间的距离，就是点x的delta，就这样遍历所有点，把每个点的delta都求出来（注意，delta是距离，谁和谁的距离？x和y的距离，y是谁？y就是比x密度大，且距离x最近的那个点，要满足两个条件，密度比x大且距离最近）&lt;br&gt;
+第3步，每个点的密度rho和delta都求出来了，以rho为横坐标，delta为纵坐标，画个二维图，图中右上角的那几个点就是聚类中心，也就是rho和delta都很大的那几个点。（为什么？因为聚类中心有个特点，密度很大，且与密度比它大的点的距离也很大）&lt;br&gt;
+第4步，找到聚类中心了，就可以扩展聚类簇了，按照rho从大到小的顺序进行聚类扩展。&lt;br&gt;
+转自知乎，链接：https://www.zhihu.com/question/65977238/answer/923739282&lt;/p&gt;
+&lt;p&gt;密度峰值算法需要输入参数t，为百分数的整数部分，如2%，用于确定截断距离Dc。&lt;strong&gt;作者建议取1%-2%&lt;/strong&gt;。&lt;br&gt;
+可以参阅文章：https://www.cnblogs.com/nolonely/p/6964852.html&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;优点：&lt;/strong&gt;&lt;br&gt;
+无需k值，性能过得去&lt;br&gt;
+&lt;strong&gt;缺点：&lt;/strong&gt;&lt;br&gt;
+似乎在高维数据上表现不佳；&lt;/p&gt;
+">2014年流形的聚类算法(Clustering by fast search and find of density peaksd)</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://postyear.github.io/post/ru-qin-jian-ce-zhong-shi-yong-de-shu-ju-zeng-qiang/"" data-c="

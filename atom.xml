@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://postyear.github.io</id>
     <title>Postyear</title>
-    <updated>2021-03-11T10:27:24.010Z</updated>
+    <updated>2021-03-11T10:33:08.909Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://postyear.github.io"/>
     <link rel="self" href="https://postyear.github.io/atom.xml"/>
@@ -65,8 +65,11 @@ Mean shift 算法是基于核密度估计的爬山算法，可用于聚类、图
 第3步，每个点的密度rho和delta都求出来了，以rho为横坐标，delta为纵坐标，画个二维图，图中右上角的那几个点就是聚类中心，也就是rho和delta都很大的那几个点。（为什么？因为聚类中心有个特点，密度很大，且与密度比它大的点的距离也很大）<br>
 第4步，找到聚类中心了，就可以扩展聚类簇了，按照rho从大到小的顺序进行聚类扩展。<br>
 转自知乎，链接：https://www.zhihu.com/question/65977238/answer/923739282</p>
-<p>密度峰值算法需要输入参数t，为百分数的整数部分，如2%，用于确定截断距离Dc。<strong>作者建议取1%-2%</strong>。<br>
-可以参阅文章：https://www.cnblogs.com/nolonely/p/6964852.html</p>
+<p>密度峰值算法需要输入参数t，为百分数的整数部分，如2%，用于确定截断距离Dc。<strong>作者建议取1%-2%</strong>。 one can choose d c so that the average number of neighbors is around 1 to 2% of the total number of points in the data set.(论文原话)</p>
+<p>可以参阅文章：https://www.cnblogs.com/nolonely/p/6964852.html</p>
+<p>python实现代码：<br>
+1.https://github.com/Larry213021/Clustering-by-fast-search-and-find-of-density-peaks/blob/main/classification/CFSDP(%E4%BB%A5t%E7%82%BA%E5%9F%BA%E6%BA%96).py<br>
+2.https://github.com/Kingzy-Chen/DensityPeakCluster</p>
 <p><strong>优点：</strong><br>
 无需k值，性能过得去<br>
 <strong>缺点：</strong><br>

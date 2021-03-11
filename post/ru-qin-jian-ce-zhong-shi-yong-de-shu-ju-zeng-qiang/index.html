@@ -9,7 +9,7 @@
 <meta name="description" content="Postyear，记录一个普通程序员的生活">
 <meta name="theme-color" content="#000">
 <title>入侵检测中使用的数据增强 | Postyear</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1615458437524">
+<link rel="shortcut icon" href="/favicon.ico?v=1615458786512">
 <link rel="stylesheet" href="/media/css/muse.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1489,8 +1489,11 @@ Mean shift 算法是基于核密度估计的爬山算法，可用于聚类、图
 第3步，每个点的密度rho和delta都求出来了，以rho为横坐标，delta为纵坐标，画个二维图，图中右上角的那几个点就是聚类中心，也就是rho和delta都很大的那几个点。（为什么？因为聚类中心有个特点，密度很大，且与密度比它大的点的距离也很大）&lt;br&gt;
 第4步，找到聚类中心了，就可以扩展聚类簇了，按照rho从大到小的顺序进行聚类扩展。&lt;br&gt;
 转自知乎，链接：https://www.zhihu.com/question/65977238/answer/923739282&lt;/p&gt;
-&lt;p&gt;密度峰值算法需要输入参数t，为百分数的整数部分，如2%，用于确定截断距离Dc。&lt;strong&gt;作者建议取1%-2%&lt;/strong&gt;。&lt;br&gt;
-可以参阅文章：https://www.cnblogs.com/nolonely/p/6964852.html&lt;/p&gt;
+&lt;p&gt;密度峰值算法需要输入参数t，为百分数的整数部分，如2%，用于确定截断距离Dc。&lt;strong&gt;作者建议取1%-2%&lt;/strong&gt;。 one can choose d c so that the average number of neighbors is around 1 to 2% of the total number of points in the data set.(论文原话)&lt;/p&gt;
+&lt;p&gt;可以参阅文章：https://www.cnblogs.com/nolonely/p/6964852.html&lt;/p&gt;
+&lt;p&gt;python实现代码：&lt;br&gt;
+1.https://github.com/Larry213021/Clustering-by-fast-search-and-find-of-density-peaks/blob/main/classification/CFSDP(%E4%BB%A5t%E7%82%BA%E5%9F%BA%E6%BA%96).py&lt;br&gt;
+2.https://github.com/Kingzy-Chen/DensityPeakCluster&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;优点：&lt;/strong&gt;&lt;br&gt;
 无需k值，性能过得去&lt;br&gt;
 &lt;strong&gt;缺点：&lt;/strong&gt;&lt;br&gt;

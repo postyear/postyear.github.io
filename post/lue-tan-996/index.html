@@ -8,7 +8,7 @@
 <meta name="keywords" content="">
 <meta name="description" content="Postyear，记录一个普通程序员的生活">
 <meta name="theme-color" content="#000">
-<title>入侵检测中使用的数据增强 | Postyear</title>
+<title>略谈996 | Postyear</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1615559814044">
 <link rel="stylesheet" href="/media/css/muse.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,8 +38,8 @@
 
 
 
-  <meta name="description" content="入侵检测中使用的数据增强" />
-  <meta name="keywords" content="机器学习" />
+  <meta name="description" content="略谈996" />
+  <meta name="keywords" content="生活杂谈" />
 </head>
 
 <body>
@@ -190,7 +190,8 @@
       <div class="sidebar-body muse" id="sidebar_body">
         
           
-            
+            <div class="post-side-meta" id="post_side_meta">
+              
 <div class="sidebar-wrapper box-shadow-wrapper ">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -243,6 +244,191 @@
 
 
 </div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li><a href="#%E6%AD%A3%E5%80%BC%E4%B8%A4%E4%BC%9A%E5%8F%AC%E5%BC%80%E5%85%A8%E5%9B%BD%E6%94%BF%E5%8D%8F%E5%A7%94%E5%91%98%E6%9D%8E%E5%9B%BD%E5%8D%8E%E7%9A%84%E4%B8%80%E6%9D%A1%E5%BB%BA%E8%AE%AE%E5%88%B7%E5%B1%8F%E4%BA%86%E5%BB%BA%E8%AE%AE%E5%AF%B9996%E5%B7%A5%E4%BD%9C%E5%88%B6%E8%BF%9B%E8%A1%8C%E7%9B%91%E7%AE%A1">正值两会召开，全国政协委员李国华的一条建议刷屏了：建议对996工作制进行监管。</a></li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
+      }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
+    });
+  }
+
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
           
         
       </div>
@@ -330,22 +516,16 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://postyear.github.io/post/ru-qin-jian-ce-zhong-shi-yong-de-shu-ju-zeng-qiang/">
-      入侵检测中使用的数据增强
+    <a class="post-title-link" href="https://postyear.github.io/post/lue-tan-996/">
+      略谈996
     </a>
   </h1>
   <div class="post-meta">
     
-    <span class="meta-item">
-      <i class="fa fa-thumb-tack"></i>
-      <span class="language" data-lan="top">置顶</span>
-      <span class="post-meta-divider">|</span>
-    </span>
-    
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-03-10 20:51:22">2021-03-10</span>
+      <span class="publish-time" data-t="2021-03-12 21:56:57">2021-03-12</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -354,8 +534,8 @@
       <span class="pc-show language" data-lan="category-in">分类于</span>
       
       
-      <a href="https://postyear.github.io/tag/NpOY-EsWm/">
-        <span>机器学习</span>
+      <a href="https://postyear.github.io/tag/qu7ArOeG9/">
+        <span>生活杂谈</span>
       </a>
       
       
@@ -364,17 +544,17 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>2<span class="language" data-lan="minute">分钟</span></span>
+      <span>3<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>391<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>729<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/ru-qin-jian-ce-zhong-shi-yong-de-shu-ju-zeng-qiang/" data-flag-title="入侵检测中使用的数据增强" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/lue-tan-996/" data-flag-title="略谈996" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -383,19 +563,20 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <p>在入侵检测中，一般特征选择用得非常多，数据增强技术使用比较少。但也有。</p>
-<p>数据增强在神经网络中更常见，主要用来防止过拟合，用于dataset较小的时候。</p>
-<p>之前对神经网络有过了解的人都知道，虽然一个两层网络在理论上可以拟合所有的分布，但是并不容易学习得到。因此在实际中，我们通常会增加神经网络的深度和广度，从而让神经网络的学习能力增强，便于拟合训练数据的分布情况。在卷积神经网络中，有人实验得到，深度比广度更重要。</p>
-<p>增强后的数据维度没有发生变化。今天记录的就是这样一种有监督的数据增强方法，计算特征的边缘密度比(marginal density ratio)替换原特征，可以加速训练。最初是国外一篇论文提出的，被用于基于SVM的入侵检测论文中，尽管作者表明可以替换为任意分类器，但应该最适合SVM。步骤如下：</p>
-<figure data-type="image" tabindex="1"><img src="https://postyear.github.io/post-images/1615381362646.png" alt="" loading="lazy"></figure>
-<p>作者是用R语言实现的，R包不太会用，后来就没有用。链接见下方：</p>
-<!-- more -->
-<p><strong>Paper</strong>：A novel approach to intrusion detection using<br>
-SVM ensemble with feature augmentation<br>
-<strong>Github</strong>：https://github.com/ShanLu92/FeaAug/blob/4df07a5c099b8e4b234ba3156208c2b671c127b2/R/LMDRT.R&gt;</p>
-<!-- more -->
-<p>还有这篇论文Augboost(Gradient Boosting Enhanced with Step-Wise Feature Augmentation)也是提出了一种新的数据增强技术，无监督，百度可以查到介绍，<br>
-https://github.com/augboost-anon/augboost</p>
+              <h1 id="正值两会召开全国政协委员李国华的一条建议刷屏了建议对996工作制进行监管">正值两会召开，全国政协委员李国华的一条建议刷屏了：建议对996工作制进行监管。</h1>
+<pre><code>这说明996超额加班的情况已经很严重了。996不是互联网行业的专属，各行各业都有这个问题。
+
+一位格力员工表示，目前已经连续工作20天中途没有休息过一天，每天早上八点钟或者晚上20点赶去开会，晚上21点或者早上9点才下班，非营销部的员工也必须销售产品……
+
+一位快递小哥表示，  2个班次  1个月论调班  夜班12小时都是正常  一般都是14小时左右  这14小时你摸不了鱼  坐不了  手不能停  一直要弯腰用力  眼睛要死顶着快递面单……
+
+还有从事土木行业的朋友表示，996真的是常态，在工地经常抢工时，不分白天昼夜，甚至不分周末周日……
+
+正常来说，每人每天8小时就是正常的，8小时工作时间人手不够赶不上产量进度？多请人不就好了？还解决了就业问题，资本家那些就是抠，往死里压榨人，就算翻几倍，它也不可能没钱赚，多少的问题罢了
+
+其实说996都是美化了“加班文化”，在制造业或者互联网行业待过的都知道，何止996，但是比996更恐怖的是领导鼓励加班，提倡奋斗，希望员工无私奉献，以加班为荣的精神pua,加班没有加班费，不允许提调休，年轻人多做事是好的，但是多少年轻人已经被折磨的没有生活乐趣，连好好坐下来吃个早餐都是奢望，难道为了工作就该放弃生活?虽然我年轻没经验，但我们愿意在规定时间想办法提高工作效率，而不是用生活和充电的时间做着重复却低效的工作。
+
+这位李委员的话，得到了很多人的支持，共和国的未来不能依托于996。奋斗是必须的，但不应该是强制的，996≠奋斗。建议按照工作量安排休息，或者监管工作时长的同时还要监管工作量，并且专门成立一个劳动监管部门，不可以由其他任何部门兼职，不然增加了其他人员的工作量，他们也很难尽心尽力。每工作一段时间比如6个月必须更换监管单位，才能防止和企业联合一气，还要设置奖励，保证劳动人口依法休息就能有奖励，让这个部门能做到和企业斗智斗勇，防止企业想出什么骚操作来偷偷逼迫员工干活。</code></pre>
 
             </div>
             
@@ -408,7 +589,7 @@ https://github.com/augboost-anon/augboost</p>
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://postyear.github.io/post/ru-qin-jian-ce-zhong-shi-yong-de-shu-ju-zeng-qiang/" title="入侵检测中使用的数据增强">https://postyear.github.io/post/ru-qin-jian-ce-zhong-shi-yong-de-shu-ju-zeng-qiang/</a>
+      <a href="https://postyear.github.io/post/lue-tan-996/" title="略谈996">https://postyear.github.io/post/lue-tan-996/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -417,21 +598,17 @@ https://github.com/augboost-anon/augboost</p>
   </ul>
   <div class="tags">
     
-      <a href="https://postyear.github.io/tag/NpOY-EsWm/"># 机器学习</a>
+      <a href="https://postyear.github.io/tag/qu7ArOeG9/"># 生活杂谈</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="2014年流行的聚类算法(Clustering by fast search and find of density peaksd)" href="https://postyear.github.io/post/2014-nian-liu-xing-de-ju-lei-suan-fa-clustering-by-fast-search-and-find-of-density-peaksd/">2014年流行的聚类算法(Clustering by fast search and find of density peaksd)</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="2014年流行的聚类算法(Clustering by fast search and find of density peaksd)" href="https://postyear.github.io/post/2014-nian-liu-xing-de-ju-lei-suan-fa-clustering-by-fast-search-and-find-of-density-peaksd/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="韩山" href="https://postyear.github.io/post/han-shan-very-hot/">韩山</a>
-        <a class="nav-mobile-next" title="韩山" href="https://postyear.github.io/post/han-shan-very-hot/">下一篇</a>
+        <a class="nav-pc-next" title="2014年流行的聚类算法(Clustering by fast search and find of density peaksd)" href="https://postyear.github.io/post/2014-nian-liu-xing-de-ju-lei-suan-fa-clustering-by-fast-search-and-find-of-density-peaksd/">2014年流行的聚类算法(Clustering by fast search and find of density peaksd)</a>
+        <a class="nav-mobile-next" title="2014年流行的聚类算法(Clustering by fast search and find of density peaksd)" href="https://postyear.github.io/post/2014-nian-liu-xing-de-ju-lei-suan-fa-clustering-by-fast-search-and-find-of-density-peaksd/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

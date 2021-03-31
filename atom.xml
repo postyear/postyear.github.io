@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://postyear.github.io</id>
     <title>Postyear</title>
-    <updated>2021-03-12T14:36:58.753Z</updated>
+    <updated>2021-03-31T04:29:47.003Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://postyear.github.io"/>
     <link rel="self" href="https://postyear.github.io/atom.xml"/>
@@ -10,6 +10,48 @@
     <logo>https://postyear.github.io/images/avatar.png</logo>
     <icon>https://postyear.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Postyear</rights>
+    <entry>
+        <title type="html"><![CDATA[记录一个超难的机器学习项目：日志异常行为检测]]></title>
+        <id>https://postyear.github.io/post/ji-lu-yi-ge-chao-nan-de-ji-qi-xue-xi-xiang-mu-ri-zhi-yi-chang-xing-wei-jian-ce/</id>
+        <link href="https://postyear.github.io/post/ji-lu-yi-ge-chao-nan-de-ji-qi-xue-xi-xiang-mu-ri-zhi-yi-chang-xing-wei-jian-ce/">
+        </link>
+        <updated>2021-03-31T03:30:06.000Z</updated>
+        <summary type="html"><![CDATA[<p><em>基于日志的异常行为检测，这是我最近接到的一个机器学习项目，目前已提交项目计划书，但还没有对方公司给的具体demo数据；和我之前做过的机器学习(入侵检测)任务不同，这一次有以下两个难点：</em></p>
+]]></summary>
+        <content type="html"><![CDATA[<p><em>基于日志的异常行为检测，这是我最近接到的一个机器学习项目，目前已提交项目计划书，但还没有对方公司给的具体demo数据；和我之前做过的机器学习(入侵检测)任务不同，这一次有以下两个难点：</em></p>
+<!-- more -->
+<ol>
+<li>
+<p>数据标注问题<br>
+<strong>这次的数据完全无标注，标签都有自己生成。</strong></p>
+<pre><code> 计划用Snorkel库解决这个问题。Snorkel是谷歌开源的机器学习库，用于半监督学习场景下的数据标记任务，需要开发人员设计标签函数。标签函数可以是基于规则（比如包含某些特定字段）、基于无监督分类器的，形式多样。
+ 暂时没有别的好的标注方法，只能先试一试；
+ 除此之外，还想到用公开的有标注的日志数据进行训练和测试。
+</code></pre>
+</li>
+</ol>
+<hr>
+<!-- more -->
+<ol start="2">
+<li>
+<p>构造特征<br>
+<strong>这次是基于日志文本的，记录了每天不同用户的访问信息。</strong></p>
+<pre><code> 自己总结了一些分别关于用户信息和事件信息的个性和共性特征，但我认为这仍然不够。需要结合文献再作扩展，特征构造的对象也没有确定。
+  这个部分可以灵活调整，拿到数据再说。
+
+  使用的检测模型，来看准备用单分类+序列挖掘；但后期也可以灵活调整。只不过项目书上这样写而已。这个项目，重点还是在于特征工程上。
+
+ 最后说下查到的相关资料，在27th ISSRE上有一篇关于日志检测文献*Experience Report: System Log Analysis for Anomaly Detection*，作者使用了两个公开的日志数据集，BGL和HDFS，自己设计了一套开源检测系统(https://github.com/logpai/loglizer)，共9种检测模型。具体做法：
+ ●.日志收集和解析：日志解析的目的是将常量部分与变量部分分开，并形成一个成熟的日志事件
+ ●.特征提取：该步骤的主要目的是从日志事件中提取有价值的特征，这些特征可以被输入异常检测模型。特征提取的输入是日志解析步骤中生成的日志事件，输出是特征矩阵（源论文中以0-1方式呈现，具体代码我还没看）。
+ ●.异常检测模型：可以是有监督，也可以用无监督。在我这个项目中客户希望用无监督的方式去做。
+
+ 关于数据集的资料，参阅文献https://ieeexplore.ieee.org/document/4273008/。
+</code></pre>
+</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[略谈996]]></title>
         <id>https://postyear.github.io/post/lue-tan-996/</id>

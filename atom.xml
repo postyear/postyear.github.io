@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://postyear.github.io</id>
     <title>Postyear</title>
-    <updated>2021-04-21T09:29:17.362Z</updated>
+    <updated>2021-04-21T09:30:57.293Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://postyear.github.io"/>
     <link rel="self" href="https://postyear.github.io/atom.xml"/>
@@ -34,12 +34,10 @@ SELECT age, COUNT(<em>)  FROM <code>test</code> GROUP BY age<br>
 <img src="https://postyear.github.io/post-images/1618996647485.png" alt="" loading="lazy"><br>
 如果使用SELECT age</em>COUNT(*)  FROM <code>test</code> GROUP BY age 那么就得到各自年龄的总和：<br>
 <img src="https://postyear.github.io/post-images/1618997137378.png" alt="" loading="lazy"></p>
-<p>总之mysql的操作非常重要，更是面试的重点，要加强学习。最后补充下Mysql三大范式：<br>
-第一范式（1NF）：要求数据库表的每一列都是不可分割的原子数据项。</p>
-<pre><code>第二范式（2NF）：第二范式(确保表中的每列都和主键相关)第二范式在第一范式的基础之上更进一层。第二范式需要确保数据库表中的每一列都和主键相关，而不能只与主键的某一部分相关（主要针对联合主键而言）。也就是说在一个数据库表中，一个表中只能保存一种数据，不可以把多种数据保存在同一张数据库表中。
-
-第三范式需要确保数据表中的每一列数据都和主键直接相关，而不能间接相关。
-</code></pre>
+<p>总之mysql的操作非常重要，更是面试的重点，要加强学习。最后补充下Mysql三大范式：</p>
+<p>1.第一范式（1NF）：要求数据库表的每一列都是不可分割的原子数据项。</p>
+<p>2.第二范式（2NF）：第二范式(确保表中的每列都和主键相关)第二范式在第一范式的基础之上更进一层。第二范式需要确保数据库表中的每一列都和主键相关，而不能只与主键的某一部分相关（主要针对联合主键而言）。也就是说在一个数据库表中，一个表中只能保存一种数据，不可以把多种数据保存在同一张数据库表中。</p>
+<p>3.第三范式需要确保数据表中的每一列数据都和主键直接相关，而不能间接相关。</p>
 ]]></content>
     </entry>
     <entry>

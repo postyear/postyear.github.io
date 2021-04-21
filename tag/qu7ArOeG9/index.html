@@ -9,7 +9,7 @@
 <meta name="description" content="Postyear，记录一个普通程序员的生活">
 <meta name="theme-color" content="#000">
 <title>Postyear</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1617165703633">
+<link rel="shortcut icon" href="/favicon.ico?v=1618997354055">
 <link rel="stylesheet" href="/media/css/muse.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -196,13 +196,13 @@
     </div>
     <div class="sidebar-item-box">
       <a href="">
-        <span class="site-item-stat-count">2</span>
+        <span class="site-item-stat-count">3</span>
         <span class="site-item-stat-name language" data-lan="category">分类</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="/tags/">
-        <span class="site-item-stat-count">2</span>
+        <span class="site-item-stat-count">3</span>
         <span class="site-item-stat-name language" data-lan="tag">标签</span>
       </a>
     </div>
@@ -252,6 +252,8 @@
           <small class="language" data-lan="tag">标签</small>
         </h2>
       </div>
+      
+      
       
       
       
@@ -1072,9 +1074,32 @@
     <div class="result" id="result">
       
       <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://postyear.github.io/post/test/"" data-c="
-          &lt;p&gt;test&lt;/p&gt;
-">test</a>
+        <a class="result-title" style="opacity: 0;" href="https://postyear.github.io/post/xin-ban-navicat-cao-zuo-mysql/"" data-c="
+          &lt;p&gt;之前Mysql命令行用得多一些，但还是很不方便的。最近开始使用Navicat。使用的是比较新的版本了，Navicat Premium 15. 这个版本改动挺大的，一些操作都不一样。&lt;/p&gt;
+&lt;p&gt;软件参照链接进行注册、使用。https://my.oschina.net/SoberLee/blog/4746541?hmsr=kaifa_aladdin。注册机的名称叫做：Navicat Keygen Patch v5.6.0 DFoX.exe。&lt;/p&gt;
+&lt;p&gt;假设有这样一张表，记录了学生的成绩、姓名、年龄等信息：&lt;br&gt;
+&lt;img src=&#34;https://postyear.github.io/post-images/1618995267923.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+对表的相关操作都转移到 &lt;em&gt;&lt;strong&gt;右键-设计表&lt;/strong&gt;&lt;/em&gt; 里面去了。比如对字段的插入、删除等。或者sql语句：&lt;br&gt;
+alter table &lt;code&gt;test&lt;/code&gt; add column colum_name varchar(255) not null&lt;/p&gt;
+&lt;p&gt;现在我需要找出根据成绩(scores)字段降序(加上 DESC)排序得到的学生，那么应该使用的SQL语句是：&lt;br&gt;
+SELECT student, age,scores FROM &lt;code&gt;test&lt;/code&gt; order by scores DESC&lt;/p&gt;
+&lt;p&gt;如果指定位置进行查找，并对返回记录的数量做出限制，在上一条语句结尾加上：&lt;br&gt;
+SELECT student, age,scores FROM &lt;code&gt;test&lt;/code&gt; order by scores DESC LIMIT 2,3&lt;/p&gt;
+&lt;p&gt;Limit设定从第二行开始，返回三条记录。参数X，Y 就表示查询的起始位置和返回记录数，X可省略。&lt;br&gt;
+但Mysql中不支持select top n的语法，TOP也没有关键字提示。&lt;/p&gt;
+&lt;p&gt;接下来我们使用 GROUP BY 语句 将数据表按年龄进行分组，并统计每种年龄有多少条记录：&lt;br&gt;
+SELECT age, COUNT(&lt;em&gt;)  FROM &lt;code&gt;test&lt;/code&gt; GROUP BY age&lt;br&gt;
+选择对象需和group by的对象一致，结果如下：&lt;br&gt;
+&lt;img src=&#34;https://postyear.github.io/post-images/1618996647485.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+如果使用SELECT age&lt;/em&gt;COUNT(*)  FROM &lt;code&gt;test&lt;/code&gt; GROUP BY age 那么就得到各自年龄的总和：&lt;br&gt;
+&lt;img src=&#34;https://postyear.github.io/post-images/1618997137378.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;总之mysql的操作非常重要，更是面试的重点，要加强学习。最后补充下Mysql三大范式：&lt;br&gt;
+第一范式（1NF）：要求数据库表的每一列都是不可分割的原子数据项。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;第二范式（2NF）：第二范式(确保表中的每列都和主键相关)第二范式在第一范式的基础之上更进一层。第二范式需要确保数据库表中的每一列都和主键相关，而不能只与主键的某一部分相关（主要针对联合主键而言）。也就是说在一个数据库表中，一个表中只能保存一种数据，不可以把多种数据保存在同一张数据库表中。
+
+第三范式需要确保数据表中的每一列数据都和主键直接相关，而不能间接相关。
+&lt;/code&gt;&lt;/pre&gt;
+">新版Navicat操作MySQL</a>
       </div>
       
       <div class="item">

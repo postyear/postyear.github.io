@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://postyear.github.io</id>
     <title>Postyear</title>
-    <updated>2021-03-31T04:41:48.480Z</updated>
+    <updated>2021-04-21T09:29:17.362Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://postyear.github.io"/>
     <link rel="self" href="https://postyear.github.io/atom.xml"/>
@@ -11,12 +11,35 @@
     <icon>https://postyear.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Postyear</rights>
     <entry>
-        <title type="html"><![CDATA[test]]></title>
-        <id>https://postyear.github.io/post/test/</id>
-        <link href="https://postyear.github.io/post/test/">
+        <title type="html"><![CDATA[新版Navicat操作MySQL]]></title>
+        <id>https://postyear.github.io/post/xin-ban-navicat-cao-zuo-mysql/</id>
+        <link href="https://postyear.github.io/post/xin-ban-navicat-cao-zuo-mysql/">
         </link>
-        <updated>2021-03-31T04:41:37.000Z</updated>
-        <content type="html"><![CDATA[<p>test</p>
+        <updated>2021-04-21T08:47:39.000Z</updated>
+        <content type="html"><![CDATA[<p>之前Mysql命令行用得多一些，但还是很不方便的。最近开始使用Navicat。使用的是比较新的版本了，Navicat Premium 15. 这个版本改动挺大的，一些操作都不一样。</p>
+<p>软件参照链接进行注册、使用。https://my.oschina.net/SoberLee/blog/4746541?hmsr=kaifa_aladdin。注册机的名称叫做：Navicat Keygen Patch v5.6.0 DFoX.exe。</p>
+<p>假设有这样一张表，记录了学生的成绩、姓名、年龄等信息：<br>
+<img src="https://postyear.github.io/post-images/1618995267923.png" alt="" loading="lazy"><br>
+对表的相关操作都转移到 <em><strong>右键-设计表</strong></em> 里面去了。比如对字段的插入、删除等。或者sql语句：<br>
+alter table <code>test</code> add column colum_name varchar(255) not null</p>
+<p>现在我需要找出根据成绩(scores)字段降序(加上 DESC)排序得到的学生，那么应该使用的SQL语句是：<br>
+SELECT student, age,scores FROM <code>test</code> order by scores DESC</p>
+<p>如果指定位置进行查找，并对返回记录的数量做出限制，在上一条语句结尾加上：<br>
+SELECT student, age,scores FROM <code>test</code> order by scores DESC LIMIT 2,3</p>
+<p>Limit设定从第二行开始，返回三条记录。参数X，Y 就表示查询的起始位置和返回记录数，X可省略。<br>
+但Mysql中不支持select top n的语法，TOP也没有关键字提示。</p>
+<p>接下来我们使用 GROUP BY 语句 将数据表按年龄进行分组，并统计每种年龄有多少条记录：<br>
+SELECT age, COUNT(<em>)  FROM <code>test</code> GROUP BY age<br>
+选择对象需和group by的对象一致，结果如下：<br>
+<img src="https://postyear.github.io/post-images/1618996647485.png" alt="" loading="lazy"><br>
+如果使用SELECT age</em>COUNT(*)  FROM <code>test</code> GROUP BY age 那么就得到各自年龄的总和：<br>
+<img src="https://postyear.github.io/post-images/1618997137378.png" alt="" loading="lazy"></p>
+<p>总之mysql的操作非常重要，更是面试的重点，要加强学习。最后补充下Mysql三大范式：<br>
+第一范式（1NF）：要求数据库表的每一列都是不可分割的原子数据项。</p>
+<pre><code>第二范式（2NF）：第二范式(确保表中的每列都和主键相关)第二范式在第一范式的基础之上更进一层。第二范式需要确保数据库表中的每一列都和主键相关，而不能只与主键的某一部分相关（主要针对联合主键而言）。也就是说在一个数据库表中，一个表中只能保存一种数据，不可以把多种数据保存在同一张数据库表中。
+
+第三范式需要确保数据表中的每一列数据都和主键直接相关，而不能间接相关。
+</code></pre>
 ]]></content>
     </entry>
     <entry>

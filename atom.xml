@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://postyear.github.io</id>
     <title>Postyear</title>
-    <updated>2021-04-21T09:32:50.045Z</updated>
+    <updated>2021-04-22T12:09:29.838Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://postyear.github.io"/>
     <link rel="self" href="https://postyear.github.io/atom.xml"/>
@@ -35,9 +35,9 @@ SELECT age, COUNT(<em>)  FROM <code>test</code> GROUP BY age<br>
 如果使用SELECT age</em>COUNT(*)  FROM <code>test</code> GROUP BY age 那么就得到各自年龄的总和：<br>
 <img src="https://postyear.github.io/post-images/1618997137378.png" alt="" loading="lazy"></p>
 <p>总之mysql的操作非常重要，更是面试的重点，要加强学习。最后补充下Mysql三大范式：</p>
-<p>1.第一范式（1NF）：要求数据库表的每一列都是不可分割的原子数据项。</p>
-<p>2.第二范式（2NF）：第二范式(确保表中的每列都和主键相关)第二范式在第一范式的基础之上更进一层。第二范式需要确保数据库表中的每一列都和主键相关，而不能只与主键的某一部分相关（主要针对联合主键而言）。也就是说在一个数据库表中，一个表中只能保存一种数据，不可以把多种数据保存在同一张数据库表中。</p>
-<p>3.第三范式需要确保数据表中的每一列数据都和主键直接相关，而不能间接相关。</p>
+<p>1.第一范式（1NF）：要求数据库表的每一列都是不可分割的基本数据项(原子字段)。强调列的原子性，试题中某一属性不能拥有几个值。</p>
+<p>2.第二范式（2NF）：第二范式(确保表中的每列都和主键相关)第二范式在第一范式的基础之上更进一层。第二范式需要确保数据库表中的每一列都和主键相关，而不能只与主键的某一部分相关（主要针对联合主键而言）。<strong>第二范式要求数据表每一个实例或者行必须被唯一标识。除满足第一范式外还有两个条件，一是表必须有一个主键；二是没有包含在主键中的列必须完全依赖于主键。</strong></p>
+<p>3.第三范式需要确保数据表中的每一列数据都和主键直接相关，而不能间接相关。<strong>即不能存在：非主键列 A 依赖于非主键列 B，非主键列 B 依赖于主键的情况。</strong></p>
 ]]></content>
     </entry>
     <entry>

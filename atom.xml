@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://postyear.github.io</id>
     <title>Postyear</title>
-    <updated>2021-04-22T12:18:02.000Z</updated>
+    <updated>2021-07-26T14:28:51.453Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://postyear.github.io"/>
     <link rel="self" href="https://postyear.github.io/atom.xml"/>
@@ -10,6 +10,41 @@
     <logo>https://postyear.github.io/images/avatar.png</logo>
     <icon>https://postyear.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Postyear</rights>
+    <entry>
+        <title type="html"><![CDATA[Spring Boot中的分层：controller，service，dao，mapper]]></title>
+        <id>https://postyear.github.io/post/spring-boot-zhong-de-fen-ceng-controllerservicedaomapper/</id>
+        <link href="https://postyear.github.io/post/spring-boot-zhong-de-fen-ceng-controllerservicedaomapper/">
+        </link>
+        <updated>2021-07-26T14:04:26.000Z</updated>
+        <summary type="html"><![CDATA[<p>最近来到了公司实习，也接触到了项目业务逻辑。特别是企业项目，文件很多，理清业务逻辑很有必要。</p>
+<p>项目使用Sping CLoud开发，而Spring Cloud基于Spring Boot设计。使用Spring Boot框架开发，必须设计controller，service，dao，mapper等层。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>最近来到了公司实习，也接触到了项目业务逻辑。特别是企业项目，文件很多，理清业务逻辑很有必要。</p>
+<p>项目使用Sping CLoud开发，而Spring Cloud基于Spring Boot设计。使用Spring Boot框架开发，必须设计controller，service，dao，mapper等层。</p>
+<!-- more -->
+<p>1.Dao(Data Access Object):数据存储对象<br>
+DAO = Data Access Object = 数据存取对象. 不管是什么框架，我们很多时候都会与数据库进行交互。如果遇到一个场景我们都要去写SQL语句，那么我们的代码就会很冗余。所以，我们就想到了把数据库封装一下，让我们的数据库的交道看起来像和一个对象打交道，这个对象通常就是DAO。当我们操作这个对象的时候，这个对象会自动产生SQL语句来和数据库进行交互，我们就只需要使用DAO就行了。</p>
+<pre><code>通常我们在DAO层里面写接口，里面有与数据打交道的方法。SQL语句通常写在mapper文件里面的。
+
+优点：结构清晰，Dao层的数据源配置以及相关的有关数据库连接的参数都在Spring配置文件中进行配置。
+</code></pre>
+<p>2.Service：服务（Biz）<br>
+服务是一个相对独立的功能模块，主要负责业务逻辑应用设计。首先也要设计接口，然后再设计其实现该接口的类。这样我们就可以在应用中调用service接口进行业务处理。service层业务实现，具体调用到已经定义的DAO的接口，封装service层的业务逻辑有利于通用的业务逻辑的独立性和重复利用性 。</p>
+<pre><code>如果把Dao层当作积木，则Service层则是对积木的搭建。
+</code></pre>
+<p>3.Controller：控制器<br>
+主要负责具体业务模块流程的控制，此层要调用到Service层的接口去控制业务流程，控制的配置同样在Spring配置文件中配置。针对不同的业务流程有不同的控制器。在设计的过程可以设计出重复利用的子单元流程模块。<br>
+在企业项目中，一般和前端路由相关，处理访问请求。</p>
+<p>4.Model：模型<br>
+模型就是指视图的数据Model，模型，通常来讲，我们会把模型和另一个东西放在一起来说：View，视图。</p>
+<pre><code>模型通常认为是视图的内核，何谓之视图？我们正在与之交互的网站的界面就是视图，而模型是指他的内核：数据。
+
+    将Model和View的概念拆分开来，有助于我们关注不同的方面，也可以更有效的分工。有些工程师更关注于内核也就是模型，通常来说，他们被称之为后端工程师。有些工程师更关注于用户界面的交互和展示，通常来说，他们被称之为前端工程师。
+</code></pre>
+<p>简而言之，<strong>Controller接收参数，Service处理业务，Dao(mapper)对数据库进行操作~</strong><br>
+划分层次就是为了分工明细(阅读和修改都方便)，降低了维护难度，代码清晰。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[数据库的隔离级别]]></title>
         <id>https://postyear.github.io/post/shu-ju-ku-de-ge-chi-ji-bie/</id>
@@ -59,7 +94,7 @@ SELECT age, COUNT(<em>)  FROM <code>test</code> GROUP BY age<br>
 如果使用SELECT age</em>COUNT(*)  FROM <code>test</code> GROUP BY age 那么就得到各自年龄的总和：<br>
 <img src="https://postyear.github.io/post-images/1618997137378.png" alt="" loading="lazy"></p>
 <p>总之mysql的操作非常重要，更是面试的重点，要加强学习。最后补充下Mysql三大范式：</p>
-<p>1.第一范式（1NF）：要求数据库表的每一列都是不可分割的基本数据项(原子字段)。强调列的原子性，试题中某一属性不能拥有几个值。</p>
+<p>1.第一范式（1NF）：要求数据库表的每一列都是不可分割的基本数据项(原子字段)。强调列的原子性，表中某一属性不能拥有几个值。</p>
 <p>2.第二范式（2NF）：第二范式(确保表中的每列都和主键相关)第二范式在第一范式的基础之上更进一层。第二范式需要确保数据库表中的每一列都和主键相关，而不能只与主键的某一部分相关（主要针对联合主键而言）。<strong>第二范式要求数据表每一个实例或者行必须被唯一标识。除满足第一范式外还有两个条件，一是表必须有一个主键；二是没有包含在主键中的列必须完全依赖于主键。</strong></p>
 <p>3.第三范式需要确保数据表中的每一列数据都和主键直接相关，而不能间接相关。<strong>即不能存在：非主键列 A 依赖于非主键列 B，非主键列 B 依赖于主键的情况。</strong></p>
 ]]></content>

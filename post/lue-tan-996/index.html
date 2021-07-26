@@ -9,7 +9,7 @@
 <meta name="description" content="Postyear，记录一个普通程序员的生活">
 <meta name="theme-color" content="#000">
 <title>略谈996 | Postyear</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1619093880215">
+<link rel="shortcut icon" href="/favicon.ico?v=1627309721887">
 <link rel="stylesheet" href="/media/css/muse.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -208,7 +208,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">8</span>
+        <span class="site-item-stat-count">9</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1631,6 +1631,35 @@
     <div class="result" id="result">
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://postyear.github.io/post/spring-boot-zhong-de-fen-ceng-controllerservicedaomapper/"" data-c="
+          &lt;p&gt;最近来到了公司实习，也接触到了项目业务逻辑。特别是企业项目，文件很多，理清业务逻辑很有必要。&lt;/p&gt;
+&lt;p&gt;项目使用Sping CLoud开发，而Spring Cloud基于Spring Boot设计。使用Spring Boot框架开发，必须设计controller，service，dao，mapper等层。&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;1.Dao(Data Access Object):数据存储对象&lt;br&gt;
+DAO = Data Access Object = 数据存取对象. 不管是什么框架，我们很多时候都会与数据库进行交互。如果遇到一个场景我们都要去写SQL语句，那么我们的代码就会很冗余。所以，我们就想到了把数据库封装一下，让我们的数据库的交道看起来像和一个对象打交道，这个对象通常就是DAO。当我们操作这个对象的时候，这个对象会自动产生SQL语句来和数据库进行交互，我们就只需要使用DAO就行了。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;通常我们在DAO层里面写接口，里面有与数据打交道的方法。SQL语句通常写在mapper文件里面的。
+
+优点：结构清晰，Dao层的数据源配置以及相关的有关数据库连接的参数都在Spring配置文件中进行配置。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;2.Service：服务（Biz）&lt;br&gt;
+服务是一个相对独立的功能模块，主要负责业务逻辑应用设计。首先也要设计接口，然后再设计其实现该接口的类。这样我们就可以在应用中调用service接口进行业务处理。service层业务实现，具体调用到已经定义的DAO的接口，封装service层的业务逻辑有利于通用的业务逻辑的独立性和重复利用性 。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;如果把Dao层当作积木，则Service层则是对积木的搭建。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;3.Controller：控制器&lt;br&gt;
+主要负责具体业务模块流程的控制，此层要调用到Service层的接口去控制业务流程，控制的配置同样在Spring配置文件中配置。针对不同的业务流程有不同的控制器。在设计的过程可以设计出重复利用的子单元流程模块。&lt;br&gt;
+在企业项目中，一般和前端路由相关，处理访问请求。&lt;/p&gt;
+&lt;p&gt;4.Model：模型&lt;br&gt;
+模型就是指视图的数据Model，模型，通常来讲，我们会把模型和另一个东西放在一起来说：View，视图。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;模型通常认为是视图的内核，何谓之视图？我们正在与之交互的网站的界面就是视图，而模型是指他的内核：数据。
+
+    将Model和View的概念拆分开来，有助于我们关注不同的方面，也可以更有效的分工。有些工程师更关注于内核也就是模型，通常来说，他们被称之为后端工程师。有些工程师更关注于用户界面的交互和展示，通常来说，他们被称之为前端工程师。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;简而言之，&lt;strong&gt;Controller接收参数，Service处理业务，Dao(mapper)对数据库进行操作~&lt;/strong&gt;&lt;br&gt;
+划分层次就是为了分工明细(阅读和修改都方便)，降低了维护难度，代码清晰。&lt;/p&gt;
+">Spring Boot中的分层：controller，service，dao，mapper</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://postyear.github.io/post/shu-ju-ku-de-ge-chi-ji-bie/"" data-c="
           &lt;p&gt;原文转自https://www.cnblogs.com/ubuntu1/p/8999403.html。&lt;/p&gt;
 &lt;p&gt;数据库事务的隔离级别有4种，由低到高分别为Read uncommitted 、Read committed 、Repeatable read 、Serializable 。而且，在事务的并发操作中可能会出现脏读，不可重复读，幻读。下面通过事例一一阐述它们的概念与联系。&lt;/p&gt;
@@ -1672,7 +1701,7 @@ SELECT age, COUNT(&lt;em&gt;)  FROM &lt;code&gt;test&lt;/code&gt; GROUP BY age&l
 如果使用SELECT age&lt;/em&gt;COUNT(*)  FROM &lt;code&gt;test&lt;/code&gt; GROUP BY age 那么就得到各自年龄的总和：&lt;br&gt;
 &lt;img src=&#34;https://postyear.github.io/post-images/1618997137378.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
 &lt;p&gt;总之mysql的操作非常重要，更是面试的重点，要加强学习。最后补充下Mysql三大范式：&lt;/p&gt;
-&lt;p&gt;1.第一范式（1NF）：要求数据库表的每一列都是不可分割的基本数据项(原子字段)。强调列的原子性，试题中某一属性不能拥有几个值。&lt;/p&gt;
+&lt;p&gt;1.第一范式（1NF）：要求数据库表的每一列都是不可分割的基本数据项(原子字段)。强调列的原子性，表中某一属性不能拥有几个值。&lt;/p&gt;
 &lt;p&gt;2.第二范式（2NF）：第二范式(确保表中的每列都和主键相关)第二范式在第一范式的基础之上更进一层。第二范式需要确保数据库表中的每一列都和主键相关，而不能只与主键的某一部分相关（主要针对联合主键而言）。&lt;strong&gt;第二范式要求数据表每一个实例或者行必须被唯一标识。除满足第一范式外还有两个条件，一是表必须有一个主键；二是没有包含在主键中的列必须完全依赖于主键。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;3.第三范式需要确保数据表中的每一列数据都和主键直接相关，而不能间接相关。&lt;strong&gt;即不能存在：非主键列 A 依赖于非主键列 B，非主键列 B 依赖于主键的情况。&lt;/strong&gt;&lt;/p&gt;
 ">新版Navicat操作MySQL</a>

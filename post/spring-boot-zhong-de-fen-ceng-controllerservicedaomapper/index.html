@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="Postyear，记录一个普通程序员的生活">
 <meta name="theme-color" content="#000">
-<title>记录一个超难的机器学习项目：日志异常行为检测 | Postyear</title>
+<title>Spring Boot中的分层：controller，service，dao，mapper | Postyear</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1627309721887">
 <link rel="stylesheet" href="/media/css/muse.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,8 +38,8 @@
 
 
 
-  <meta name="description" content="记录一个超难的机器学习项目：日志异常行为检测" />
-  <meta name="keywords" content="机器学习" />
+  <meta name="description" content="Spring Boot中的分层：controller，service，dao，mapper" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -330,8 +330,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://postyear.github.io/post/ji-lu-yi-ge-chao-nan-de-ji-qi-xue-xi-xiang-mu-ri-zhi-yi-chang-xing-wei-jian-ce/">
-      记录一个超难的机器学习项目：日志异常行为检测
+    <a class="post-title-link" href="https://postyear.github.io/post/spring-boot-zhong-de-fen-ceng-controllerservicedaomapper/">
+      Spring Boot中的分层：controller，service，dao，mapper
     </a>
   </h1>
   <div class="post-meta">
@@ -345,22 +345,9 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-03-31 11:30:06">2021-03-31</span>
+      <span class="publish-time" data-t="2021-07-26 22:04:26">2021-07-26</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://postyear.github.io/tag/NpOY-EsWm/">
-        <span>机器学习</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
@@ -369,12 +356,12 @@
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>660<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>812<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/ji-lu-yi-ge-chao-nan-de-ji-qi-xue-xi-xiang-mu-ri-zhi-yi-chang-xing-wei-jian-ce/" data-flag-title="记录一个超难的机器学习项目：日志异常行为检测" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/spring-boot-zhong-de-fen-ceng-controllerservicedaomapper/" data-flag-title="Spring Boot中的分层：controller，service，dao，mapper" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -383,38 +370,30 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <p><em>基于日志的异常行为检测，这是我最近接到的一个机器学习项目，目前已提交项目计划书，但还没有对方公司给的具体demo数据；和我之前做过的机器学习(入侵检测)任务不同，这一次有以下两个难点：</em></p>
+              <p>最近来到了公司实习，也接触到了项目业务逻辑。特别是企业项目，文件很多，理清业务逻辑很有必要。</p>
+<p>项目使用Sping CLoud开发，而Spring Cloud基于Spring Boot设计。使用Spring Boot框架开发，必须设计controller，service，dao，mapper等层。</p>
 <!-- more -->
-<ol>
-<li>
-<p>数据标注问题<br>
-<strong>这次的数据完全无标注，标签都有自己生成。</strong></p>
-<pre><code> 计划用Snorkel库解决这个问题。Snorkel是谷歌开源的机器学习库，用于半监督学习场景下的数据标记任务，需要开发人员设计标签函数。标签函数可以是基于规则（比如包含某些特定字段）、基于无监督分类器的，形式多样。
- 暂时没有别的好的标注方法，只能先试一试；
- 除此之外，还想到用公开的有标注的日志数据进行训练和测试。
+<p>1.Dao(Data Access Object):数据存储对象<br>
+DAO = Data Access Object = 数据存取对象. 不管是什么框架，我们很多时候都会与数据库进行交互。如果遇到一个场景我们都要去写SQL语句，那么我们的代码就会很冗余。所以，我们就想到了把数据库封装一下，让我们的数据库的交道看起来像和一个对象打交道，这个对象通常就是DAO。当我们操作这个对象的时候，这个对象会自动产生SQL语句来和数据库进行交互，我们就只需要使用DAO就行了。</p>
+<pre><code>通常我们在DAO层里面写接口，里面有与数据打交道的方法。SQL语句通常写在mapper文件里面的。
+
+优点：结构清晰，Dao层的数据源配置以及相关的有关数据库连接的参数都在Spring配置文件中进行配置。
 </code></pre>
-</li>
-</ol>
-<hr>
-<!-- more -->
-<ol start="2">
-<li>
-<p>构造特征<br>
-<strong>这次是基于日志文本的，记录了每天不同用户的访问信息。</strong></p>
-<pre><code> 自己总结了一些分别关于用户信息和事件信息的个性和共性特征，但我认为这仍然不够。需要结合文献再作扩展，特征构造的对象也没有确定。
-  这个部分可以灵活调整，拿到数据再说。
-
-  使用的检测模型，来看准备用单分类+序列挖掘；但后期也可以灵活调整。只不过项目书上这样写而已。这个项目，重点还是在于特征工程上。
-
- 最后说下查到的相关资料，在27th ISSRE上有一篇关于日志检测文献*Experience Report: System Log Analysis for Anomaly Detection*，作者使用了两个公开的日志数据集，BGL和HDFS，自己设计了一套开源检测系统(https://github.com/logpai/loglizer)，共9种检测模型。具体做法：
- ●.日志收集和解析：日志解析的目的是将常量部分与变量部分分开，并形成一个成熟的日志事件
- ●.特征提取：该步骤的主要目的是从日志事件中提取有价值的特征，这些特征可以被输入异常检测模型。特征提取的输入是日志解析步骤中生成的日志事件，输出是特征矩阵（源论文中以0-1方式呈现，具体代码我还没看）。
- ●.异常检测模型：可以是有监督，也可以用无监督。在我这个项目中客户希望用无监督的方式去做。
-
- 关于数据集的资料，参阅文献https://ieeexplore.ieee.org/document/4273008/。
+<p>2.Service：服务（Biz）<br>
+服务是一个相对独立的功能模块，主要负责业务逻辑应用设计。首先也要设计接口，然后再设计其实现该接口的类。这样我们就可以在应用中调用service接口进行业务处理。service层业务实现，具体调用到已经定义的DAO的接口，封装service层的业务逻辑有利于通用的业务逻辑的独立性和重复利用性 。</p>
+<pre><code>如果把Dao层当作积木，则Service层则是对积木的搭建。
 </code></pre>
-</li>
-</ol>
+<p>3.Controller：控制器<br>
+主要负责具体业务模块流程的控制，此层要调用到Service层的接口去控制业务流程，控制的配置同样在Spring配置文件中配置。针对不同的业务流程有不同的控制器。在设计的过程可以设计出重复利用的子单元流程模块。<br>
+在企业项目中，一般和前端路由相关，处理访问请求。</p>
+<p>4.Model：模型<br>
+模型就是指视图的数据Model，模型，通常来讲，我们会把模型和另一个东西放在一起来说：View，视图。</p>
+<pre><code>模型通常认为是视图的内核，何谓之视图？我们正在与之交互的网站的界面就是视图，而模型是指他的内核：数据。
+
+    将Model和View的概念拆分开来，有助于我们关注不同的方面，也可以更有效的分工。有些工程师更关注于内核也就是模型，通常来说，他们被称之为后端工程师。有些工程师更关注于用户界面的交互和展示，通常来说，他们被称之为前端工程师。
+</code></pre>
+<p>简而言之，<strong>Controller接收参数，Service处理业务，Dao(mapper)对数据库进行操作~</strong><br>
+划分层次就是为了分工明细(阅读和修改都方便)，降低了维护难度，代码清晰。</p>
 
             </div>
             
@@ -427,7 +406,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://postyear.github.io/post/ji-lu-yi-ge-chao-nan-de-ji-qi-xue-xi-xiang-mu-ri-zhi-yi-chang-xing-wei-jian-ce/" title="记录一个超难的机器学习项目：日志异常行为检测">https://postyear.github.io/post/ji-lu-yi-ge-chao-nan-de-ji-qi-xue-xi-xiang-mu-ri-zhi-yi-chang-xing-wei-jian-ce/</a>
+      <a href="https://postyear.github.io/post/spring-boot-zhong-de-fen-ceng-controllerservicedaomapper/" title="Spring Boot中的分层：controller，service，dao，mapper">https://postyear.github.io/post/spring-boot-zhong-de-fen-ceng-controllerservicedaomapper/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -436,21 +415,15 @@
   </ul>
   <div class="tags">
     
-      <a href="https://postyear.github.io/tag/NpOY-EsWm/"># 机器学习</a>
-    
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="新版Navicat操作MySQL" href="https://postyear.github.io/post/xin-ban-navicat-cao-zuo-mysql/">新版Navicat操作MySQL</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="新版Navicat操作MySQL" href="https://postyear.github.io/post/xin-ban-navicat-cao-zuo-mysql/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="略谈996" href="https://postyear.github.io/post/lue-tan-996/">略谈996</a>
-        <a class="nav-mobile-next" title="略谈996" href="https://postyear.github.io/post/lue-tan-996/">下一篇</a>
+        <a class="nav-pc-next" title="数据库的隔离级别" href="https://postyear.github.io/post/shu-ju-ku-de-ge-chi-ji-bie/">数据库的隔离级别</a>
+        <a class="nav-mobile-next" title="数据库的隔离级别" href="https://postyear.github.io/post/shu-ju-ku-de-ge-chi-ji-bie/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

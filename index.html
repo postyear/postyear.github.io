@@ -9,7 +9,7 @@
 <meta name="description" content="Postyear，记录一个普通程序员的生活">
 <meta name="theme-color" content="#000">
 <title>Postyear</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1627309721887">
+<link rel="shortcut icon" href="/favicon.ico?v=1640146379457">
 <link rel="stylesheet" href="/media/css/muse.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -190,19 +190,19 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">9</span>
+        <span class="site-item-stat-count">10</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="">
-        <span class="site-item-stat-count">3</span>
+        <span class="site-item-stat-count">4</span>
         <span class="site-item-stat-name language" data-lan="category">分类</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="/tags/">
-        <span class="site-item-stat-count">3</span>
+        <span class="site-item-stat-count">4</span>
         <span class="site-item-stat-name language" data-lan="tag">标签</span>
       </a>
     </div>
@@ -248,8 +248,8 @@
     <div class="article-wrapper bg-color">
       <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://postyear.github.io/post/spring-boot-zhong-de-fen-ceng-controllerservicedaomapper/">
-      Spring Boot中的分层：controller，service，dao，mapper
+    <a class="post-title-link" href="https://postyear.github.io/post/wei-fu-wu-zhong-de-shi-er-yao-su-ying-yong-yuan-ze/">
+      微服务中的十二要素应用原则
     </a>
   </h1>
   <div class="post-meta">
@@ -263,18 +263,31 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-07-26 22:04:26">2021-07-26</span>
+      <span class="publish-time" data-t="2021-12-22 12:08:00">2021-12-22</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">分类于</span>
+      
+      
+      <a href="https://postyear.github.io/tag/RdXjW-9wK/">
+        <span>微服务</span>
+      </a>
+      
+      
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>3<span class="language" data-lan="minute">分钟</span></span>
+      <span>9<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>812<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>2416<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
@@ -283,14 +296,85 @@
         
         
           
-            <p>最近来到了公司实习，也接触到了项目业务逻辑。特别是企业项目，文件很多，理清业务逻辑很有必要。</p>
-<p>项目使用Sping CLoud开发，而Spring Cloud基于Spring Boot设计。使用Spring Boot框架开发，必须设计controller，service，dao，mapper等层。</p>
+            <p><strong>十二要素应用原则</strong>（The Twelve-Factor App） 在如今的微服务领域非常流行，相信大家或多或少有所耳闻，但了解其中细节的并不多。</p>
+<p>今天，我将对这12个原则做一个概要分析，结合Go语言中的相关例子，根据开源与大厂的具体实践，和大家一起看看个中究竟。</p>
+<p>英文链接 https://12factor.net/<br>
+中文链接 https://12factor.net/zh_cn/</p>
+<p><code>核心概念</code><br>
+先对12个概念做一个简单的讲解，让不熟悉的朋友心中有个初步概念。</p>
+<ol>
+<li>Codebase 基准代码 - 一份基准代码，多份部署<br>
+示例：一个应用程序的代码，放在一个Git仓库里。</li>
+</ol>
+<p>分支算不算一个仓库呢？</p>
+<p>这点常有不同的理解。我个人会把一个分支认为是一个轻量级的仓库，每个分支对应一个具体的业务场景。</p>
+<p>痛点：在分布式的环境下，保证多个机器上运行的应用程序源代码一致，提升排查问题的效率。</p>
+<ol start="2">
+<li>Dependencies 依赖 - 显式声明依赖关系<br>
+示例：Go语言的go module就显式地声明了项目依赖库与版本，方便维护。</li>
+</ol>
+<p>痛点：以前Go vendor模式，将依赖代码都放在本地，没有一个文件集中说明项目的依赖，这就导致想找依赖关系必须去看代码细节。如果某个库的v1.0版本有bug，需要升级到1.1，go module只需查看一个文件，而vendor模式得遍历具体的项目，甚至多次递归。</p>
+<ol start="3">
+<li>Config 配置 - 在环境中存储配置<br>
+示例：将配置信息（端口、数据库、外部服务等）放在环境中，而不要硬编码。</li>
+</ol>
+<p>环境定义的扩展：在微服务中，这个环境指的是代码具体的运行环境，包括配置文件、环境变量、配置中心的数据。</p>
+<p>值得一提的是，按照这种实践，配置文件不应该和应用程序代码放在一个代码仓库中，而是单独管理。</p>
+<p>痛点：保证多机器上运行的代码一致后，把变化点转移到配置中，避免硬编码到代码仓库中、导致更新需要整体升级。</p>
+<ol start="4">
+<li>Backing Services 后端服务 - 把后端服务当作附加资源<br>
+示例：当前的数据库选型为MySQL，有一天突然转变成了阿里云的RDS，只需要修改一个配置。</li>
+</ol>
+<p>痛点：这是一种面向标准接口编程的模式，重点是让非业务相关的代码变得灵活可替代，如数据库、缓存、第三方服务。从被调用方的角度来看，过于理想化，很多重量级的组件很难被替代；而从调用方来看，这一切又显得理所当然，谁都希望外部系统的变化是无感知的。</p>
+<p>这一点，非常考验每个服务的设计者的能力，尤其是API接口。</p>
+<ol start="5">
+<li>Build, release, run 构建，发布，运行 - 严格分离构建和运行<br>
+示例：Go程序在一个构建机器上用 go build命令生成二进制文件，在发布阶段将这个二进制文件分发到各个待运行的机器上，最后在各个机器上运行这个二进制文件。</li>
+</ol>
+<p>痛点：强调了CICD一整套流水线，不要让构建和运行强绑定。举个极端的例子，如果有一台centos和一台ubuntu的机器，我们去两个机器上各自编译+运行，可能因为内核不同而发生奇怪的现象；而如果采用在一台专用的centos机器上编译成统一的可执行文件，再分发到这两台机器上，更加合理。</p>
+<p>如果centos上可执行文件无法在ubuntu机器上运行，就在部署阶段报错，提醒我们去修复。我们更应该去把部署的机器改成centos统一管理，而不是去花大量精力兼容ubuntu。</p>
+<p>随着Docker技术的推广，大量简化了这一步骤。</p>
+<ol start="6">
+<li>Processes 进程 - 以一个或多个无状态进程运行应用<br>
+示例：程序的内存中不保存具体业务相关的数据，而应该保存在共享存储上。</li>
+</ol>
+<p>痛点：程序有状态是横向扩容的一大阻碍。想要完全去掉有状态的数据过于理想化，毕竟放在共享存储上肯定不如本地内存访问快，这对一些性能敏感的应用来说影响很大；但微服务架构强调要面向失败编程，这些有状态的数据在程序崩溃时无法恢复，可能导致级联雪崩的等更可怕情况。这一点，需要服务的负责人仔细权衡。</p>
+<ol start="7">
+<li>Port Binding 端口绑定 - 通过端口绑定提供服务<br>
+示例：通过开放端口、以RPC形式提供服务</li>
+</ol>
+<p>痛点：历史上有些程序以unix socket的本地形式提供服务，维护成本比较高。目前微服务以HTTP为代表的RPC方式提供服务，适合横向扩展。</p>
+<ol start="8">
+<li>Concurrency 并发 - 通过进程模型进行扩展<br>
+示例：当并发量达到一定程度，通过横向扩容进程（Docker实例）来满足需求</li>
+</ol>
+<p>痛点：在并发度比较小时，最简单的提升方式是纵向扩容 - 即提高机器的配置。但当并发程度达到一定级别后，无法再通过提升硬件配置来解决。如果进程做到了无状态，利用外部的调度平台（如k8s）进行扩缩容，更适合长期发展。</p>
+<ol start="9">
+<li>Disposability 易处理 - 快速启动和优雅终止可最大化健壮性<br>
+示例：程序能够快速启动，遇到严重异常时也能尽可能地完成现有的任务，优雅终止。</li>
+</ol>
+<p>痛点：启动时间少能让程序遇到问题后快速恢复，也可以更快速地横向扩容；而优雅终止更多地是为了保障数据的一致性。</p>
+<ol start="10">
+<li>Dev/prod parity 开发环境与线上环境等价 - 尽可能的保持开发，预发布，线上环境相同<br>
+示例：开发、预发布、线上等环境上部署的代码、配置、第三方服务等，尽可能地保证一致，让故障提前在测试环境发生。</li>
+</ol>
+<p>痛点：尽可能地保证线上环境的稳定性，让问题尽可能地在开发环境中暴露出来，结合CICD工作保障环境的一致性。</p>
+<ol start="11">
+<li>Logs 日志 - 把日志当作事件流<br>
+示例：在微服务架构中，通过日志将一个事件（如一个RPC请求）串联起来。</li>
+</ol>
+<p>痛点：利用格式化的日志+ELK，将日志收集到统一的管理平台，用于分析数据。</p>
+<ol start="12">
+<li>Admin processes 管理进程 - 后台管理任务当作一次性进程运行<br>
+示例：将脚本、定时任务等，也作为一个应用程序提交，由k8s等调度平台执行</li>
+</ol>
+<p>痛点：手动执行脚本或任务往往会有两个严重问题：误操作与可追溯性差。更合理的方式是走一个正式的发布流程，方便管理。</p>
 
           
         
         
         <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://postyear.github.io/post/spring-boot-zhong-de-fen-ceng-controllerservicedaomapper/" rel="contents">
+          <a class="btn language" data-lan="read-more" href="https://postyear.github.io/post/wei-fu-wu-zhong-de-shi-er-yao-su-ying-yong-yuan-ze/" rel="contents">
             阅读全文 »
           </a>
         </div>
@@ -639,6 +723,60 @@ Mean shift 算法是基于核密度估计的爬山算法，可用于聚类、图
     <div class="article-wrapper bg-color">
       <section class="post-header">
   <h1 class="post-title">
+    <a class="post-title-link" href="https://postyear.github.io/post/spring-boot-zhong-de-fen-ceng-controllerservicedaomapper/">
+      Spring Boot中的分层：controller，service，dao，mapper
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2021-07-26 22:04:26">2021-07-26</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>3<span class="language" data-lan="minute">分钟</span></span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>812<span class="pc-show language" data-lan="words">字数</span></span>
+    </span>
+    
+  </div>
+</section>
+      <div class="post-body">
+        
+        
+          
+            <p>最近来到了公司实习，也接触到了项目业务逻辑。特别是企业项目，文件很多，理清业务逻辑很有必要。</p>
+<p>项目使用Sping CLoud开发，而Spring Cloud基于Spring Boot设计。使用Spring Boot框架开发，必须设计controller，service，dao，mapper等层。</p>
+
+          
+        
+        
+        <div class="post-button text-center">
+          <a class="btn language" data-lan="read-more" href="https://postyear.github.io/post/spring-boot-zhong-de-fen-ceng-controllerservicedaomapper/" rel="contents">
+            阅读全文 »
+          </a>
+        </div>
+        
+      </div>
+      
+        <footer class="post-footer">
+          <div class="post-eof"></div>
+        </footer>
+      
+    </div>
+  </article>
+
+  <article class="post-list-box bg-color post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <section class="post-header">
+  <h1 class="post-title">
     <a class="post-title-link" href="https://postyear.github.io/post/xin-ban-navicat-cao-zuo-mysql/">
       新版Navicat操作MySQL
     </a>
@@ -709,93 +847,6 @@ Mean shift 算法是基于核密度估计的爬山算法，可用于聚类、图
         
         <div class="post-button text-center">
           <a class="btn language" data-lan="read-more" href="https://postyear.github.io/post/xin-ban-navicat-cao-zuo-mysql/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-        <footer class="post-footer">
-          <div class="post-eof"></div>
-        </footer>
-      
-    </div>
-  </article>
-
-  <article class="post-list-box bg-color post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://postyear.github.io/post/lue-tan-996/">
-      略谈996
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-03-12 21:56:57">2021-03-12</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://postyear.github.io/tag/qu7ArOeG9/">
-        <span>生活杂谈</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>3<span class="language" data-lan="minute">分钟</span></span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>729<span class="pc-show language" data-lan="words">字数</span></span>
-    </span>
-    
-  </div>
-</section>
-      <div class="post-body">
-        
-        
-          
-            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
-            
-            
-              
-              
-              
-            
-              
-              
-              
-            
-              
-              
-              
-            
-            
-              <p><h1 id="正值两会召开全国政协委员李国华的一条建议刷屏了建议对996工作制进行监管">正值两会召开，全国政协委员李国华的一条建议刷屏了：建议对996工作制进行监管。</h1>
-<p>这说明996超额加班的情况已经很严重了。996不是互联网行业的专属，各行各业都有这个问题。<br>
-一位格力员工表示，目前已经连续工作20天中途没有休息过一天，每天早上八点钟或者晚上20点赶去开会，晚上21点或者早上9点才下班，非营销部的员工也必须销售产品……<br>
-
-                
-              <p>
-            
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://postyear.github.io/post/lue-tan-996/" rel="contents">
             阅读全文 »
           </a>
         </div>
@@ -1615,6 +1666,96 @@ Mean shift 算法是基于核密度估计的爬山算法，可用于聚类、图
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://postyear.github.io/post/wei-fu-wu-zhong-de-shi-er-yao-su-ying-yong-yuan-ze/"" data-c="
+          &lt;p&gt;&lt;strong&gt;十二要素应用原则&lt;/strong&gt;（The Twelve-Factor App） 在如今的微服务领域非常流行，相信大家或多或少有所耳闻，但了解其中细节的并不多。&lt;/p&gt;
+&lt;p&gt;今天，我将对这12个原则做一个概要分析，结合Go语言中的相关例子，根据开源与大厂的具体实践，和大家一起看看个中究竟。&lt;/p&gt;
+&lt;p&gt;英文链接 https://12factor.net/&lt;br&gt;
+中文链接 https://12factor.net/zh_cn/&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;核心概念&lt;/code&gt;&lt;br&gt;
+先对12个概念做一个简单的讲解，让不熟悉的朋友心中有个初步概念。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Codebase 基准代码 - 一份基准代码，多份部署&lt;br&gt;
+示例：一个应用程序的代码，放在一个Git仓库里。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;分支算不算一个仓库呢？&lt;/p&gt;
+&lt;p&gt;这点常有不同的理解。我个人会把一个分支认为是一个轻量级的仓库，每个分支对应一个具体的业务场景。&lt;/p&gt;
+&lt;p&gt;痛点：在分布式的环境下，保证多个机器上运行的应用程序源代码一致，提升排查问题的效率。&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Dependencies 依赖 - 显式声明依赖关系&lt;br&gt;
+示例：Go语言的go module就显式地声明了项目依赖库与版本，方便维护。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;痛点：以前Go vendor模式，将依赖代码都放在本地，没有一个文件集中说明项目的依赖，这就导致想找依赖关系必须去看代码细节。如果某个库的v1.0版本有bug，需要升级到1.1，go module只需查看一个文件，而vendor模式得遍历具体的项目，甚至多次递归。&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Config 配置 - 在环境中存储配置&lt;br&gt;
+示例：将配置信息（端口、数据库、外部服务等）放在环境中，而不要硬编码。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;环境定义的扩展：在微服务中，这个环境指的是代码具体的运行环境，包括配置文件、环境变量、配置中心的数据。&lt;/p&gt;
+&lt;p&gt;值得一提的是，按照这种实践，配置文件不应该和应用程序代码放在一个代码仓库中，而是单独管理。&lt;/p&gt;
+&lt;p&gt;痛点：保证多机器上运行的代码一致后，把变化点转移到配置中，避免硬编码到代码仓库中、导致更新需要整体升级。&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Backing Services 后端服务 - 把后端服务当作附加资源&lt;br&gt;
+示例：当前的数据库选型为MySQL，有一天突然转变成了阿里云的RDS，只需要修改一个配置。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;痛点：这是一种面向标准接口编程的模式，重点是让非业务相关的代码变得灵活可替代，如数据库、缓存、第三方服务。从被调用方的角度来看，过于理想化，很多重量级的组件很难被替代；而从调用方来看，这一切又显得理所当然，谁都希望外部系统的变化是无感知的。&lt;/p&gt;
+&lt;p&gt;这一点，非常考验每个服务的设计者的能力，尤其是API接口。&lt;/p&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Build, release, run 构建，发布，运行 - 严格分离构建和运行&lt;br&gt;
+示例：Go程序在一个构建机器上用 go build命令生成二进制文件，在发布阶段将这个二进制文件分发到各个待运行的机器上，最后在各个机器上运行这个二进制文件。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;痛点：强调了CICD一整套流水线，不要让构建和运行强绑定。举个极端的例子，如果有一台centos和一台ubuntu的机器，我们去两个机器上各自编译+运行，可能因为内核不同而发生奇怪的现象；而如果采用在一台专用的centos机器上编译成统一的可执行文件，再分发到这两台机器上，更加合理。&lt;/p&gt;
+&lt;p&gt;如果centos上可执行文件无法在ubuntu机器上运行，就在部署阶段报错，提醒我们去修复。我们更应该去把部署的机器改成centos统一管理，而不是去花大量精力兼容ubuntu。&lt;/p&gt;
+&lt;p&gt;随着Docker技术的推广，大量简化了这一步骤。&lt;/p&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;Processes 进程 - 以一个或多个无状态进程运行应用&lt;br&gt;
+示例：程序的内存中不保存具体业务相关的数据，而应该保存在共享存储上。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;痛点：程序有状态是横向扩容的一大阻碍。想要完全去掉有状态的数据过于理想化，毕竟放在共享存储上肯定不如本地内存访问快，这对一些性能敏感的应用来说影响很大；但微服务架构强调要面向失败编程，这些有状态的数据在程序崩溃时无法恢复，可能导致级联雪崩的等更可怕情况。这一点，需要服务的负责人仔细权衡。&lt;/p&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;Port Binding 端口绑定 - 通过端口绑定提供服务&lt;br&gt;
+示例：通过开放端口、以RPC形式提供服务&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;痛点：历史上有些程序以unix socket的本地形式提供服务，维护成本比较高。目前微服务以HTTP为代表的RPC方式提供服务，适合横向扩展。&lt;/p&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;Concurrency 并发 - 通过进程模型进行扩展&lt;br&gt;
+示例：当并发量达到一定程度，通过横向扩容进程（Docker实例）来满足需求&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;痛点：在并发度比较小时，最简单的提升方式是纵向扩容 - 即提高机器的配置。但当并发程度达到一定级别后，无法再通过提升硬件配置来解决。如果进程做到了无状态，利用外部的调度平台（如k8s）进行扩缩容，更适合长期发展。&lt;/p&gt;
+&lt;ol start=&#34;9&#34;&gt;
+&lt;li&gt;Disposability 易处理 - 快速启动和优雅终止可最大化健壮性&lt;br&gt;
+示例：程序能够快速启动，遇到严重异常时也能尽可能地完成现有的任务，优雅终止。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;痛点：启动时间少能让程序遇到问题后快速恢复，也可以更快速地横向扩容；而优雅终止更多地是为了保障数据的一致性。&lt;/p&gt;
+&lt;ol start=&#34;10&#34;&gt;
+&lt;li&gt;Dev/prod parity 开发环境与线上环境等价 - 尽可能的保持开发，预发布，线上环境相同&lt;br&gt;
+示例：开发、预发布、线上等环境上部署的代码、配置、第三方服务等，尽可能地保证一致，让故障提前在测试环境发生。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;痛点：尽可能地保证线上环境的稳定性，让问题尽可能地在开发环境中暴露出来，结合CICD工作保障环境的一致性。&lt;/p&gt;
+&lt;ol start=&#34;11&#34;&gt;
+&lt;li&gt;Logs 日志 - 把日志当作事件流&lt;br&gt;
+示例：在微服务架构中，通过日志将一个事件（如一个RPC请求）串联起来。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;痛点：利用格式化的日志+ELK，将日志收集到统一的管理平台，用于分析数据。&lt;/p&gt;
+&lt;ol start=&#34;12&#34;&gt;
+&lt;li&gt;Admin processes 管理进程 - 后台管理任务当作一次性进程运行&lt;br&gt;
+示例：将脚本、定时任务等，也作为一个应用程序提交，由k8s等调度平台执行&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;痛点：手动执行脚本或任务往往会有两个严重问题：误操作与可追溯性差。更合理的方式是走一个正式的发布流程，方便管理。&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;&lt;code&gt;一、开发阶段要素&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;你（研发人员）收到了一个需求，要实现一个分布式的订单服务。于是，你新建了一个git仓库（1.基准代码），准备用go语言编写，部署在多个机器上（8.并发）。开发期间引用了大量的开源库，用Go Module将这些依赖都管理了起来（2.依赖）。&lt;/p&gt;
+&lt;p&gt;开发过程中，由于测试和线上的数据库地址不同，所以你把这些信息放在了配置中心（3.配置），如Etcd、k8s的ConfigMap中。&lt;/p&gt;
+&lt;p&gt;由于外部服务会依赖这个订单服务，所以要求研发提供的API接口必须向前兼容，所以选用了经典的RESTful风格的HTTP接口作为对外的协议（7.端口绑定）。这样，即便订单服务后续不断迭代，对外部来说也只是修改一个调用地址即可（4.后端服务）。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;二、上线阶段要素&lt;/code&gt;&lt;br&gt;
+在测试、预发布环境，为了开发与测试人员更好地验证功能，绝大部分的配置参数都保证与线上一致（10.开发环境与线上环境等价）。&lt;/p&gt;
+&lt;p&gt;整个上线流程包括了测试、预发布、线上三个环境的部署和验证，统一采用CICD的技术自动化执行（5.构建，发布，运行）。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;三、维护阶段要素&lt;/code&gt;&lt;br&gt;
+订单服务很复杂，经常会发生崩溃，导致很多数据恢复不了。于是，研发组长决定把关键的数据都放在Redis集群中（6.进程），保证应用的无状态化。&lt;/p&gt;
+&lt;p&gt;数据不丢了，但程序崩溃后恢复很慢，发现花大量的时间在加载初始数据上。于是又做了一次优化，利用Lazy Load的思路，按需加载（9.易处理）。&lt;/p&gt;
+&lt;p&gt;程序正常运行了，但用户反馈有个请求经常失败。这时，你利用ELK收集上的日志，排查了整个链路中的信息（11.日志），发现某处代码逻辑搞混了。当前的问题修复了，你还需要去数据库修复历史数据，就又写了个sql脚本提交到专门用来维护修改数据的代码仓库，提交给平台自动运行（12.管理进程）。&lt;/p&gt;
+">微服务中的十二要素应用原则</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://postyear.github.io/post/spring-boot-zhong-de-fen-ceng-controllerservicedaomapper/"" data-c="
